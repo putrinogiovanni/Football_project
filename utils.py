@@ -7,6 +7,7 @@ import matplotlib.patheffects as path_effects
 from mplsoccer.pitch import Pitch, VerticalPitch
 from mplsoccer import PyPizza, Radar
 from highlight_text import fig_text
+import streamlit as st
 
 
 def pizza_chart(params, value1, value2):
@@ -42,7 +43,7 @@ def pizza_chart(params, value1, value2):
         # values to be used when adding parameter-values labels
         kwargs_compare_values=dict(fontsize=0),
     )
-
+    st.write("OK")
     #plt.legend(bbox_to_anchor = (1.2, 1))
 
     return fig
