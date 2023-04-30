@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import streamlit as st
 import pandas as pd
 import json
+import math
 from io import BytesIO
 import numpy as np
 from mplsoccer.pitch import Pitch, VerticalPitch
@@ -11,6 +12,10 @@ from highlight_text import fig_text
 import matplotlib.pyplot as plt
 import utils
 import plotly.express as px
+from datetime import datetime
+from datetime import date
+from dateutil.relativedelta import relativedelta
+import os
 
 
 # Page config
@@ -47,6 +52,8 @@ with st.sidebar:
                           0, int(max_value/1000), (0, int(max_value/1000)), step=50)
         compare = st.selectbox('Comparison with', [
             'All positions', 'Defenders', 'Midfielders', 'Strikers'])
+
+        scad = st.checkbox('Expiring conctact')
 
         run_1 = st.form_submit_button('Run')
 
@@ -117,6 +124,13 @@ elif st.session_state.count2 > 0 or run_1:
     else:
         df_filt = df[(df.Age.between(age[0], age[1])) & (df.val_num.between(
             value[0]*1000, value[1]*1000)) & (df.Ruolo == role) & ((df.Foot == foot.lower) | (df.Foot == 'both'))]
+
+    if scad:
+        df_filt['scad_y'] = df['Contract expires'].apply(lambda x: int(relativedelta(datetime.strptime(datetime.strptime(x, '%b %d, %Y').strftime(
+            '%Y-%m-%d'), '%Y-%m-%d'), datetime.strptime(datetime.today().strftime('%Y-%m-%d'), '%Y-%m-%d')).years) if x != '-' else x)
+
+        df_filt = df_filt[df_filt.scad_y != '-']
+        df_filt = df_filt[df_filt.scad_y <= 1]
 
     df_filt_2 = df_filt.sort_values(by=['sim_to'], ascending=False)[['name', 'cluster_bay', 'cluster_0', 'cluster_1',                                                     'cluster_2', 'cluster_3', 'cluster_4', 'cluster_5', 'cluster_6', 'cluster_7', 'cluster_8', 'cluster_9', 'cluster_10', 'cluster_11', 'hybrid',
                                                                     'sim_to']].head(Number)
@@ -284,18 +298,27 @@ elif st.session_state.count2 > 0 or run_1:
         polar=dict(radialaxis=dict(gridwidth=0.5,
                                    showticklabels=True, ticks='', gridcolor="grey")))
 
-    st.plotly_chart(fig)
+    col1, col2, col3 = st.columns([1.5, 6, 1])
+
+    with col1:
+        st.write(' ')
+
+    with col2:
+        st.plotly_chart(fig)
+
+    with col3:
+        st.write(' ')
 
     mkt = ['full_name',
            'birth_date',
-           'country',
-           'Current club',
            'Età',
            'Ruolo',
            'cluster_bay',
+           'Foot',
            'Height',
            'Citizenship',
-           'Foot',
+           'country',
+           'Current club',
            'Joined',
            'Contract expires',
            'Outfitter',
@@ -308,8 +331,34 @@ elif st.session_state.count2 > 0 or run_1:
            'On loan from',
            'Contract there expires',
            '2nd club',
-           '3nd club'
+           '3nd club',
+           'val_num'
            ]
+
+    sub_mkt = ['full_name',
+               'birth_date',
+               'Età',
+               'Ruolo',
+               'cluster_bay',
+               'Foot',
+               'Height',
+               'Citizenship',
+               'country',
+               'Current club',
+               'Joined',
+               'Contract expires',
+               'Outfitter',
+               'Player agent',
+               'Max_Val',
+               'Date_Max_Val',
+               'Valore',
+               'Date of last contract extension',
+               'Contract option',
+               'On loan from',
+               'Contract there expires',
+               '2nd club',
+               '3nd club',
+               ]
 
     bio = ['full_name', 'Squad',
            'Starting eleven',
@@ -318,17 +367,70 @@ elif st.session_state.count2 > 0 or run_1:
            'Suspended',
            'Injured']
 
-    col1, col2 = st.columns([0.7, 0.8])
+    col1, col2 = st.columns([2.5, 1.5])
 
     with col1:
-        st.dataframe(df[(df.full_name == player) |
-                        (df.full_name == player_2)][mkt].transpose())
+        df_t = df[(df.full_name == player) |
+                  (df.full_name == player_2)][mkt]
+
+        df_t_t = df_t.set_index('full_name').transpose()
+
+        df_t_sub = df_t[sub_mkt].set_index('full_name').transpose()
+
+        st.dataframe(df_t_sub.dropna(axis=0, how='all'))
 
     st.write('')
 
     with col2:
-        st.dataframe(df[(df.full_name == player) |
-                        (df.full_name == player_2)][bio].transpose())
+        df_t_2 = df[(df.full_name == player) |
+                    (df.full_name == player_2)][bio].set_index('full_name').transpose()
+        st.dataframe(df_t_2.dropna(axis=0, how='all'))
+
+    col1, col2, col3 = st.columns([1, 1, 1])
+
+    st.write(
+        """
+    <style>
+    [data-testid="stMetricDelta"] svg {
+        display: none;
+    }
+    </style>
+    """,
+        unsafe_allow_html=True,
+    )
+    with col1:
+        if df_t_t.loc['val_num'][1] - df_t_t.loc['val_num'][0] >= 0:
+            st.metric(label=f"{player_2} value:",
+                      value="{:,}".format(df_t_t.loc['val_num'][1]), delta='+ '+"{:,}".format(df_t_t.loc['val_num'][1] - df_t_t.loc['val_num'][0]))
+        else:
+            st.metric(label=f"Valore {player_2}",
+                      value="{:,}".format(df_t_t.loc['val_num'][1]), delta='- '+"{:,}".format(df_t_t.loc['val_num'][1] - df_t_t.loc['val_num'][0]))
+
+    with col2:
+        rdelta = relativedelta(datetime.strptime(datetime.strptime(df_t_t.loc['Contract expires'][1], '%b %d, %Y').strftime(
+            '%Y-%m-%d'), '%Y-%m-%d'), datetime.strptime(datetime.today().strftime('%Y-%m-%d'), '%Y-%m-%d'))
+        st.metric(label=f"{player_2} contract expires",
+                  value=df_t_t.loc['Contract expires'][1], delta=f'{rdelta.years} y and {rdelta.months} months')
+        if df_t['Date of last contract extension'].isnull().iloc[1]:
+            st.text(f"Date of\nlast contract extension: None")
+        else:
+            st.text(
+                f"Date of last\ncontract extension: {df_t['Date of last contract extension'].values[1]}")
+
+    with col3:
+        if os.path.exists(f"seriea_loghi\\{df_t['Current club'].values[1]}.png"):
+            st.text(f"Current Club: {df_t['Current club'].values[1]}")
+            st.image(
+                f"seriea_loghi\\{df_t['Current club'].values[1]}.png")
+            st.text(f"Joined on : {df_t['Joined'].values[1]}")
+            if not df_t['On loan from'].isnull().iloc[1]:
+                st.text(f"On loan from: {df_t['On loan from'].values[1]}")
+                st.image(
+                    f"seriea_loghi\\{df_t['On loan from'].values[1]}.png")
+        else:
+            st.text(f"Current Club: {df_t['Current club'].values[1]}")
+            st.image(
+                "seriea_loghi\\blank.png")
 
 
 else:
