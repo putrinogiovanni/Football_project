@@ -241,8 +241,6 @@ elif st.session_state.count2 > 0 or run_1:
                     'HSR Distance OTIP_p90',
                     'HSR Distance TIP_p90',
                     'In Fuorigioco_p90',
-                    'opxA',
-                    'opxG',
                     'Palle Laterali_p90',
                     'Passaggi Chiave ricevuti_p90',
                     'Passaggi Chiave_p90',
