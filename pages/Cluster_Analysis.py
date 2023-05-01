@@ -39,7 +39,7 @@ with col1:
     st.write('')
     st.write('')
     st.write('')
-    st.image('data\\weight_d.png', use_column_width=True)
+    st.image('data/weight_d.png', use_column_width=True)
 
 with col2:
     st.image('cluster_dif.png',  use_column_width=True)
@@ -65,7 +65,7 @@ with col1:
     st.write('')
     st.write('')
     st.write('')
-    st.image('data\\weight_c.png', use_column_width=True)
+    st.image('data/weight_c.png', use_column_width=True)
 
 with col2:
     st.image('cluster_cent.png',  use_column_width=True)
@@ -92,7 +92,7 @@ with col1:
     st.write('')
     st.write('')
     st.write('')
-    st.image('data\\weight_a.png', use_column_width=True)
+    st.image('data/weight_a.png', use_column_width=True)
 
 with col2:
     st.image('cluster_att.png',  use_column_width=True)
