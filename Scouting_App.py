@@ -1,14 +1,11 @@
-import plotly.offline as pyo
 import plotly.graph_objects as go
 import streamlit as st
 import pandas as pd
 import json
 import math
-from io import BytesIO
 import numpy as np
 from mplsoccer.pitch import Pitch, VerticalPitch
 from mplsoccer import PyPizza, Radar
-from highlight_text import fig_text
 import matplotlib.pyplot as plt
 import plotly.express as px
 from datetime import datetime
