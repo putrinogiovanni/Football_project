@@ -152,28 +152,28 @@ elif st.session_state.count2 > 0 or run_1:
                 st.markdown(
                     f"Cluster: **{df_copy[df_copy.full_name==player]['cluster_bay'].values[0]}**")
                 st.image(
-                    f"seriea_loghi\\{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png")
+                    f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png")
                 st.text(
                     f"Joined on : {df_copy[df_copy.full_name==player]['Joined'].values[0]}")
                 if not df_copy[df_copy.full_name == player]['On loan from'].isnull().iloc[0]:
                     st.text(
                         f"On loan from: {df_copy[df_copy.full_name==player]['On loan from'].values[0]}")
                     st.image(
-                        f"seriea_loghi\\{df_copy[df_copy.full_name==player]['On loan from'].values[0]}.png")
+                        f"seriea_loghi/{df_copy[df_copy.full_name==player]['On loan from'].values[0]}.png")
             else:
                 st.markdown(
                     f"Role: **{df[df.full_name==player]['Ruolo'].values[0]}**")
                 st.markdown(
                     f"Cluster: **{df[df.full_name==player]['cluster_bay'].values[0]}**")
                 st.image(
-                    f"seriea_loghi\\{df[df.full_name==player]['Current club'].values[0]}.png")
+                    f"seriea_loghi/{df[df.full_name==player]['Current club'].values[0]}.png")
                 st.text(
                     f"Joined on : {df[df.full_name==player]['Joined'].values[0]}")
                 if not df[df.full_name == player]['On loan from'].isnull().iloc[0]:
                     st.text(
                         f"On loan from: {df[df.full_name==player]['On loan from'].values[0]}")
                     st.image(
-                        f"seriea_loghi\\{df[df.full_name==player]['On loan from'].values[0]}.png")
+                        f"seriea_loghi/{df[df.full_name==player]['On loan from'].values[0]}.png")
 
         with col2:
             st.write('Similarity Dataframe')
@@ -478,22 +478,22 @@ elif st.session_state.count2 > 0 or run_1:
                         f"Contract option: {df_t_t.loc['Contract option'][1]}")
 
             with col3:
-                if os.path.exists(f"seriea_loghi\\{df_t_t.loc['Current club'][1]}.png"):
+                if os.path.exists(f"seriea_loghi/{df_t_t.loc['Current club'][1]}.png"):
                     st.text(
                         f"Current Club: {df_t_t.loc['Current club'][1]}")
                     st.image(
-                        f"seriea_loghi\\{df_t_t.loc['Current club'][1]}.png")
+                        f"seriea_loghi/{df_t_t.loc['Current club'][1]}.png")
                     st.text(f"Joined on : {df_t_t.loc['Joined'][1]}")
                     if not df_t['On loan from'].isnull().iloc[1]:
                         st.text(
                             f"On loan from: {df_t_t.loc['On loan from'][1]}")
                         st.image(
-                            f"seriea_loghi\\{df_t_t.loc['On loan from'][1]}.png")
+                            f"seriea_loghi/{df_t_t.loc['On loan from'][1]}.png")
                 else:
                     st.text(
                         f"Current Club: {df_t_t.loc['Current club'][1]}")
                     st.image(
-                        "seriea_loghi\\blank.png")
+                        "seriea_loghi/blank.png")
 
 
 else:
