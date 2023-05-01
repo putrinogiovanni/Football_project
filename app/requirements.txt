@@ -5,4 +5,3 @@ streamlit
 plotly
 DateTime
 python-dateutil
-os-sys
