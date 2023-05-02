@@ -153,8 +153,6 @@ elif st.session_state.count2 > 0 or run_1:
                     f"Role: **{df_copy[df_copy.full_name==player]['Ruolo'].values[0]}**")
                 st.markdown(
                     f"Cluster: **{df_copy[df_copy.full_name==player]['cluster_bay'].values[0]}**")
-                st.write(
-                    f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png")
                 if os.path.exists(f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png"):
                     st.image(
                         f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png")
@@ -172,8 +170,11 @@ elif st.session_state.count2 > 0 or run_1:
                     f"Role: **{df[df.full_name==player]['Ruolo'].values[0]}**")
                 st.markdown(
                     f"Cluster: **{df[df.full_name==player]['cluster_bay'].values[0]}**")
-                st.image(
-                    f"seriea_loghi/{df[df.full_name==player]['Current club'].values[0]}.png")
+                if os.path.exists(f"seriea_loghi/{df[df.full_name==player]['Current club'].values[0]}.png"):
+                    st.image(
+                        f"seriea_loghi/{df[df.full_name==player]['Current club'].values[0]}.png")
+                else:
+                    st.image("seriea_loghi/blank.png")
                 st.text(
                     f"Joined on : {df[df.full_name==player]['Joined'].values[0]}")
                 if not df[df.full_name == player]['On loan from'].isnull().iloc[0]:
