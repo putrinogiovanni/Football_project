@@ -45,7 +45,7 @@ with st.sidebar:
                         min(df.Age), max(df.Age), (min(df.Age), max(df.Age)))
         foot = st.selectbox('Preferred foot', ['All', 'Right', 'Left'])
         Number = st.slider("Number of result", 0, 10)
-        value = st.slider('Market Value',
+        value = st.slider('Market Value (mln/1000 €)',
                           0, int(max_value/1000), (0, int(max_value/1000)), step=50)
         compare = st.selectbox('Comparison with', [
             'All positions', 'Defenders', 'Midfielders', 'Strikers'])
