@@ -1,6 +1,7 @@
 import streamlit as st
 import base64
-
+st.markdown(
+    """### Below a description of some less easily understood metrics""")
 st.markdown("""| Metric                    | Description                                                                             |
 |---------------------------|-----------------------------------------------------------------------------------------|
 | _p90                      | mins played adjusted (90 min.)                                                          |
