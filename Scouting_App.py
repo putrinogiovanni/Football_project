@@ -243,6 +243,14 @@ elif st.session_state.count2 > 0 or run_1:
                     'Duels in the offensive midfield_p100'
                     ]
 
+        change_text = """
+        <style>
+        div.st-cs.st-c5.st-bc.st-ct.st-cu {visibility: hidden;}
+        div.st-cs.st-c5.st-bc.st-ct.st-cu:before {content: "Wähle eine Option"; visibility: visible;}
+        </style>
+        """
+        st.markdown(change_text, unsafe_allow_html=True)
+
         params = st.multiselect(
             "Metrics to compare",
             sorted(metriche),
