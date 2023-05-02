@@ -153,8 +153,11 @@ elif st.session_state.count2 > 0 or run_1:
                     f"Role: **{df_copy[df_copy.full_name==player]['Ruolo'].values[0]}**")
                 st.markdown(
                     f"Cluster: **{df_copy[df_copy.full_name==player]['cluster_bay'].values[0]}**")
-                st.image(
-                    f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png")
+                if os.path.exists(f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png"):
+                    st.image(
+                        f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png")
+                else:
+                    st.image("seriea_loghi/blank.png")
                 st.text(
                     f"Joined on : {df_copy[df_copy.full_name==player]['Joined'].values[0]}")
                 if not df_copy[df_copy.full_name == player]['On loan from'].isnull().iloc[0]:
@@ -468,8 +471,13 @@ elif st.session_state.count2 > 0 or run_1:
                     if not df_t['On loan from'].isnull().iloc[1]:
                         st.text(
                             f"On loan from: {df_t_t.loc['On loan from'][1]}")
-                        st.image(
-                            f"seriea_loghi/{df_t_t.loc['On loan from'][1]}.png")
+                        if os.path.exists(f"seriea_loghi/{df_t_t.loc['On loan from'][1]}.png"):
+                            st.image(
+                                f"seriea_loghi/{df_t_t.loc['On loan from'][1]}.png")
+
+                        else:
+                            st.image("seriea_loghi/blank.png")
+
                 else:
                     st.text(
                         f"Current Club: {df_t_t.loc['Current club'][1]}")
