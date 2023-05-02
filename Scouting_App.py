@@ -71,12 +71,14 @@ if not run_1 and st.session_state.count == 0:
             }
         </style>
         ### Welcome to the Player Scouting App!</u> \n
-        ##### With this application you have the ability to scout the most similar players compared to the player given in input.\
-        Similarity is calculated using cosine distance.\
-        The search can be refined by choosing various metrics to filter on, such as age, market value, and preferred foot.\
-        One can also choose from which categories of players to search and whether to search only for players with expiring contracts. \n
-        ##### There is Cluster_Analysis page where the clusters and the methodology used are described, both for defining the similarity metric and for constructing the clusters \n
-        ##### To start, use the sidebar on the left to choose number of result  that will be shown and click on "RUN" button.
+        ##### Given an input player, this application scouts for the players with the most similarities.
+        Similarity is calculated using cosine distance. The search can be refined by setting various metrics, such as
+        age, market value, and preferred foot. You can also choose which categories of players you want to search
+        from or whether to restrict the search to players with expiring contracts only. \n
+        ##### The Cluster_Analysis page describes the mathematics behind the similarities and how the clusters have
+        been built. \n
+        ##### To start scouting, use the sidebar on the left to select the input player, set the metrics including the number
+        of results to show, then click "RUN".
         """,
         unsafe_allow_html=True
     )
@@ -180,8 +182,7 @@ elif st.session_state.count2 > 0 or run_1:
             st.write('')
             st.dataframe(df_filt_2[sure].dropna(axis=1, how='all'))
 
-        # Team selection
-        st.subheader("Select players to compare")
+        st.subheader("Select player to compare")
 
         st.session_state['button2'] = True
 
@@ -255,9 +256,9 @@ elif st.session_state.count2 > 0 or run_1:
                     ]
 
         params = st.multiselect(
-            "Metric to compare",
+            "Metrics to compare",
             sorted(metriche),
-            help="Select metrics to compare with"
+            help="Choose metrics for comparison. The percentile ranking will be displayed with respect to the cluster if the player under comparison belongs to the same cluster, to the role if he belongs to a different cluster but shares the same role, or with respect to the entire dataset if he also has a different role."
         )
 
         if len(params) == 0:
@@ -504,12 +505,14 @@ else:
             }
         </style>
         ### Welcome to the Player Scouting App!</u> \n
-        ##### With this application you have the ability to scout the most similar players compared to the player given in input.\
-        Similarity is calculated using cosine distance.\
-        The search can be refined by choosing various metrics to filter on, such as age, market value, and preferred foot.\
-        One can also choose from which categories of players to search and whether to search only for players with expiring contracts. \n
-        ##### There is Cluster_Analysis page where the clusters and the methodology used are described, both for defining the similarity metric and for constructing the clusters \n
-        ##### To start, use the sidebar on the left to choose number of result  that will be shown and click on "RUN" button.
+        ##### Given an input player, this application scouts for the players with the most similarities.
+        Similarity is calculated using cosine distance. The search can be refined by setting various metrics, such as
+        age, market value, and preferred foot. You can also choose which categories of players you want to search
+        from or whether to restrict the search to players with expiring contracts only. \n
+        ##### The Cluster_Analysis page describes the mathematics behind the similarities and how the clusters have
+        been built. \n
+        ##### To start scouting, use the sidebar on the left to select the input player, set the metrics including the number
+        of results to show, then click "RUN".
         """,
         unsafe_allow_html=True
     )
