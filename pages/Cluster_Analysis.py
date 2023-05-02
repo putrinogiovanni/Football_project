@@ -27,7 +27,7 @@ st.markdown(
     ### For the clusters creation we relied on the Bayesian-Gaussian-Mixture Model.\n
     ### We decided to choose this model because compared to other clustering models, such as the K-Means model, it provides a probability of belonging or not belonging to a certain cluster.\n
     ### In case you want to learn more about the technical work behind it see this link:\n
-    https://github.com/putrinogiovanni/Football_project/blob/main/Clustering_and_scraping/final.ipynb .\n
+    ## https://github.com/putrinogiovanni/Football_project/blob/main/Clustering_and_scraping/final.ipynb .\n
     ### These are the results obtained:\n
     """)
 
@@ -53,7 +53,7 @@ st.markdown("""1. In the first cluster we find defenders with a high number of d
 
 2. In the second cluster we can see values similar to the third cluster with higher values, however, regarding duels of play and lower dribbling. Good values regarding physical metrics. These are players who play a role on the wing but with less offensive characteristics than in the third cluster. We find in this cluster players such as ***:orange[Marusic]***, ***:orange[De Sciglio]*** and ***:orange[Elseid Hysaj]***. 
 
-3. To the third cluster belong players who present important values for Lateral_P90 balls, statistics related to running and distance and we find interesting values for crosses. Thus, defenders who play on the wing who make a good number of dribbles and crosses will belong to this cluster. Defenders such as for example ***:orange[Federico Dimarco], ***:orange[Álvaro Odriozola]***, ***:orange[Alex Sandro]***, ***:orange[Cristiano Biraghi]*** and ***:orange[Theo Hernández]*** are found in this cluster.
+3. To the third cluster belong players who present important values for Lateral_P90 balls, statistics related to running and distance and we find interesting values for crosses. Thus, defenders who play on the wing who make a good number of dribbles and crosses will belong to this cluster. Defenders such as for example ***:orange[Federico Dimarco]***, ***:orange[Álvaro Odriozola]***, ***:orange[Alex Sandro]***, ***:orange[Cristiano Biraghi]*** and ***:orange[Theo Hernández]*** are found in this cluster.
 
 4. Players with fairly high values on Distance_TIP_90 and key passes belong to the fourth cluster. We can see that compared to the other clusters they present a lower number of duels and fouls made. The numbers on aerial duels and recovered balls are slightly higher than the other defenders. This is interesting, as they have good numbers on recovered balls but relatively few duels made. One might infer that these are players who therefore present good field placement. This suggests to us that in this cluster we go to find players who usually play the classic role of central defender. Indeed, we find among these players such as ***:orange[Bonucci]***, ***:orange[Skriniar]***, ***:orange[Milenkovic]***, and ***:orange[De Vrij]***.""")
 
