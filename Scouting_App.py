@@ -386,7 +386,7 @@ elif st.session_state.count2 > 0 or run_1:
                        '3nd club',
                        ]
 
-            bio = ['full_name', 'Squad',
+            bio = ['full_name', 'Played',
                    'Starting eleven',
                    'Substituted in',
                    'On the bench',
