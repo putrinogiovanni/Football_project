@@ -26,7 +26,8 @@ st.markdown(
     ## **:red[Cluster creation]**\n
     ### For the clusters creation we relied on the Bayesian-Gaussian-Mixture Model.\n
     ### We decided to choose this model because compared to other clustering models, such as the K-Means model, it provides a probability of belonging or not belonging to a certain cluster.\n
-    ### In case you want to learn more about the technical work behind it see this link https://github.com/putrinogiovanni/Football_project/blob/main/Clustering_and_scraping/final.ipynb .\n
+    ### In case you want to learn more about the technical work behind it see this link:\
+    ### https://github.com/putrinogiovanni/Football_project/blob/main/Clustering_and_scraping/final.ipynb .\n
     ### These are the results obtained:\n
     """)
 
