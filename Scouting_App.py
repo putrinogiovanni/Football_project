@@ -246,7 +246,7 @@ elif st.session_state.count2 > 0 or run_1:
         change_text = """
         <style>
         div.st-ew.st-ds.st-cn.st-dt.st-du.st-ex {visibility: hidden;}
-        div.st-ew.st-ds.st-cn.st-dt.st-du.st-ex:before {content: "Wähle eine Option"; visibility: visible;}
+        div.st-ew.st-ds.st-cn.st-dt.st-du.st-ex:before {content: "Choose multiple options"; visibility: visible;}
         </style>
         """
         st.markdown(change_text, unsafe_allow_html=True)
