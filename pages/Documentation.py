@@ -8,7 +8,7 @@ st.markdown("""| Metric                    | Description                        
 | OTIP                      | Team in Possession                                                                      |
 | TIP                       | Opponent Team In Possesion                                                              |
 | Count High Acceleration   | Discrete activity exceeding 3 m/s^2                                                     |
-| Count High Deceleration   | Discreta activity under -3m/s^2                                                         |
+| Count High Deceleration   | Discrete activity under -3m/s^2                                                         |
 | Count HSR                 | Discrete activity between 20 and 25 km/h.  The activity needs to last for at least 0.7s |
 | Count Medium Acceleration | Discrete activity between 1.5 and 3 m/s^2                                               |
 | Count Medium Deceleration | Discrete activity between -1.5 and -3 m/s^2                                             |
