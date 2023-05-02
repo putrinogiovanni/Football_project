@@ -71,13 +71,13 @@ if not run_1 and st.session_state.count == 0:
             }
         </style>
         ### Welcome to the Player Scouting App!</u> \n
-        ##### Given an input player, this application scouts for the players with the most similarities.
-        Similarity is calculated using cosine distance. The search can be refined by setting various metrics, such as
-        age, market value, and preferred foot. You can also choose which categories of players you want to search
+        ##### Given an input player, this application scouts for the players with the most similarities.\
+        Similarity is calculated using cosine distance. The search can be refined by setting various metrics, such as\
+        age, market value, and preferred foot. You can also choose which categories of players you want to search\
         from or whether to restrict the search to players with expiring contracts only. \n
-        ##### The Cluster_Analysis page describes the mathematics behind the similarities and how the clusters have
+        ##### The Cluster_Analysis page describes the mathematics behind the similarities and how the clusters have\
         been built. \n
-        ##### To start scouting, use the sidebar on the left to select the input player, set the metrics including the number
+        ##### To start scouting, use the sidebar on the left to select the input player, set the metrics including the number\
         of results to show, then click "RUN".
         """,
         unsafe_allow_html=True
