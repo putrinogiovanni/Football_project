@@ -70,7 +70,7 @@ if not run_1 and st.session_state.count == 0:
             text-decoration-color: #fa4d00;
             }
         </style>
-        ### Welcome to the Player Scouting App!</u> \n
+        # Welcome to the Player Scouting App!</u> \n
         ##### Given an input player, this application scouts for the players with the most similarities.\
         Similarity is calculated using cosine distance. The search can be refined by setting various metrics, such as\
         age, market value, and preferred foot. You can also choose which categories of players you want to search\
