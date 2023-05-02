@@ -160,6 +160,8 @@ elif st.session_state.count2 > 0 or run_1:
                     st.image("seriea_loghi/blank.png")
                 st.text(
                     f"Joined on : {df_copy[df_copy.full_name==player]['Joined'].values[0]}")
+                st.text(
+                    f"Current Club : {df_copy[df_copy.full_name==player]['Current club'].values[0]}")
                 if not df_copy[df_copy.full_name == player]['On loan from'].isnull().iloc[0]:
                     st.text(
                         f"On loan from: {df_copy[df_copy.full_name==player]['On loan from'].values[0]}")
