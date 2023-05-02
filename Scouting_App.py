@@ -243,13 +243,16 @@ elif st.session_state.count2 > 0 or run_1:
                     'Duels in the offensive midfield_p100'
                     ]
 
-        change_text = """
-        <style>
-        div.st-ew.st-ds.st-cn.st-dt.st-du.st-ex {visibility: hidden;}
-        div.st-ew.st-ds.st-cn.st-dt.st-du.st-ex:before {content: "Choose multiple options"; visibility: visible;}
-        </style>
-        """
-        st.markdown(change_text, unsafe_allow_html=True)
+        # non funziona tutte le volte che ricarica ti cambia la div
+        # change_text = """
+        # <style>
+        # div.st-ew.st-ds.st-cn.st-dt.st-du.st-ex {visibility: hidden;}
+        # div.st-ew.st-ds.st-cn.st-dt.st-du.st-ex:before {content: "Choose multiple options"; visibility: visible;}
+        # </style>
+        # """
+        # st.markdown(change_text, unsafe_allow_html=True)
+
+        st.subheader("Select metrics to compare")
 
         params = st.multiselect(
             "Metrics to compare",
