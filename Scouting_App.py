@@ -153,6 +153,8 @@ elif st.session_state.count2 > 0 or run_1:
                     f"Role: **{df_copy[df_copy.full_name==player]['Ruolo'].values[0]}**")
                 st.markdown(
                     f"Cluster: **{df_copy[df_copy.full_name==player]['cluster_bay'].values[0]}**")
+                st.write(
+                    f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png")
                 if os.path.exists(f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png"):
                     st.image(
                         f"seriea_loghi/{df_copy[df_copy.full_name==player]['Current club'].values[0]}.png")
