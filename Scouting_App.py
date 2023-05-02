@@ -255,7 +255,7 @@ elif st.session_state.count2 > 0 or run_1:
         st.subheader("Select metrics to compare")
 
         params = st.multiselect(
-            "Metrics to compare",
+            "Metrics to compare (at least three for a better visual representation)",
             sorted(metriche),
             help="Choose metrics for comparison. The percentile ranking will be displayed with respect to the cluster if the player under comparison belongs to the same cluster, to the role if he belongs to a different cluster but shares the same role, or with respect to the entire dataset if he also has a different role."
         )
