@@ -38,7 +38,7 @@ max_value = max(df.val_num)
 with st.sidebar:
     st.image(
         "logo.png",
-        use_column_width=True)
+        use_container_width=True)
     with st.form('Form1'):
         player = st.selectbox("Select a Player", df.full_name)
         age = st.slider('Select a range for Age',
